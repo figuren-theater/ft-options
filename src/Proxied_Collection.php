@@ -20,7 +20,7 @@ use Figuren_Theater\SiteParts;
  * @package Figuren_Theater\Options
  * @since   1.1
  */
-final class ProxiedOptionsCollection extends SiteParts\ProxiedSitePartsCollectionAbstract {
+final class Proxied_Collection extends SiteParts\ProxiedSitePartsCollectionAbstract {
 
 	/**
 	 * Checks wether it is allowed to add something to our collection.

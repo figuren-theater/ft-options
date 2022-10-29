@@ -9,7 +9,7 @@ declare(strict_types=1);
  * Author URI:      https://carsten-bach.de
  * Text Domain:     ft-options
  * Domain Path:     /languages
- * Version:         1.1.0
+ * Version:         1.1.1
  *
  * @package         Figuren_Theater\Options
  */
@@ -31,7 +31,7 @@ const DIRECTORY = __DIR__;
 		// 3.1. Create Collection 
 		// It's important, to do that before ADDing post_types,
 		// to properly instantiate our collection.
-		$OptionsCollection = OptionsCollection::get_collection();
+		$collection = Collection::get_collection();
 
 		// 3.2. Add all Options to the collection
 		//      
@@ -40,9 +40,9 @@ const DIRECTORY = __DIR__;
 		// 3.3. Setup SitePart Manager for 'Options'
 		// with its personal RegistrationHandler and our 
 		// prepared Collection
-		$ft_site->set_OptionsManager( new OptionsManager( 
-			// with its OptionsCollection
-			$OptionsCollection
+		$ft_site->set_Options_Manager( new Manager( 
+			// with its Collection
+			$collection
 		) );
 	},
 	40

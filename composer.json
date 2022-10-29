@@ -3,7 +3,7 @@
     "description": "Options Management for WordPress Multisite",
     "type": "wordpress-muplugin",
     "license": "GPL-3",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "extra": {
         "installer-name": "Options"
     },

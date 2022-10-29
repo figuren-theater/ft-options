@@ -18,7 +18,7 @@ use Figuren_Theater\Options\Abstracts;
  * @since   2.0
  * @since   2.10 Refactored from old 'SyncFrom' class which implemented the 'SyncSource__Interface'.
  */
-class Synced_Option extends Abstracts\Option {
+class Option_Synced extends Abstracts\Option {
 
 	/**
 	 * Blog ID where to retrieve this option from.
@@ -52,7 +52,7 @@ class Synced_Option extends Abstracts\Option {
 	 *
 	 * Defaults to get all synced option values from https://figuren.theater, 
 	 * which can be filtered seperately per option using 
-	 * 'Figuren_Theater\Options\Synced_Option\{$option_name}\remote_blog_id'.
+	 * 'Figuren_Theater\Options\Option_Synced\{$option_name}\remote_blog_id'.
 	 *
 	 * @since      2.10
 	 *

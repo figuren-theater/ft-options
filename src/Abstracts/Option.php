@@ -52,7 +52,7 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 	public string $type = 'option'; // or 'site_option'
 
 	/**
-	 * Identifier for this option, as it is used as the unique name inside the OptionsCollection.
+	 * Identifier for this option, as it is used as the unique name inside the Collection.
 	 *
 	 * And for some ... reasons we often need this string like that.
 	 *
@@ -268,7 +268,7 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 	}
 
 	/**
-	 * Adds this Option to the global OptionsCollection.
+	 * Adds this Option to the global Collection.
 	 *
 	 * @since   1.1
 	 */

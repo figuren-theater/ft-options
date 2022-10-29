@@ -31,7 +31,7 @@ use Figuren_Theater\SiteParts;
  * @package Figuren_Theater\Options
  * @since  1.1
  */
-class OptionsManager extends SiteParts\SitePartsManagerAbstract {
+class Manager extends SiteParts\SitePartsManagerAbstract {
 
 	/**
 	 * Returns an array of hooks that this subscriber wants to register with
@@ -56,7 +56,7 @@ class OptionsManager extends SiteParts\SitePartsManagerAbstract {
 			'ft_db_cleanup'            => 'run_cron_cleanup',
 
 			// phpcs:ignore Squiz.PHP.CommentedOutCode.Found
-			// 'init'                  => [ 'debug_ft_OptionsManager', 42 ],
+			// 'init'                  => [ 'debug_ft_Manager', 42 ],
 		];
 	}
 
@@ -176,9 +176,9 @@ class OptionsManager extends SiteParts\SitePartsManagerAbstract {
 	/**
 	 * Multiple DB cleanup actions to run on a regurlar bases.
 	 *
-	 * 1. Autoload, Un-Autoload or Delete options managed by the OptionsManager.
-	 * 2. Un-Autoload Options, not handled directly by the OptionsManager.
-	 * 3. Delete Options, not handled directly by the OptionsManager.
+	 * 1. Autoload, Un-Autoload or Delete options managed by the Manager.
+	 * 2. Un-Autoload Options, not handled directly by the Manager.
+	 * 3. Delete Options, not handled directly by the Manager.
 	 *
 	 * @since     2.10
 	 */
@@ -241,7 +241,7 @@ class OptionsManager extends SiteParts\SitePartsManagerAbstract {
 		 * @since 2.10
 		 *
 		 * @param array   $options Array with all options to un-autoload.
-		 * @param object  $this    This OptionsManager object.
+		 * @param object  $this    This Manager object.
 		 */
 		$options = \apply_filters( 
 			$_hook_name, 
@@ -346,7 +346,7 @@ class OptionsManager extends SiteParts\SitePartsManagerAbstract {
 		 * @since 2.10
 		 *
 		 * @param array   $options Array with all options to delete.
-		 * @param object  $this    This OptionsManager object.
+		 * @param object  $this    This Manager object.
 		 */
 		$options = \apply_filters( 
 			$_hook_name, 
@@ -362,7 +362,7 @@ class OptionsManager extends SiteParts\SitePartsManagerAbstract {
 	 * 
 	 * @ignore
 	 */
-	public function debug_ft_OptionsManager() {
+	public function debug_ft_Manager() {
 	
 		// meta.f.test
 		// phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedIf

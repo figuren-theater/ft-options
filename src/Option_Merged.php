@@ -18,7 +18,7 @@ use Figuren_Theater\Options\Abstracts;
  * @since   2.0
  * @since   2.10 Refactored from old 'SyncAndMerge' class which implemented the 'ArrayAccess' and 'SyncAndMerge__Interface'.
  */
-class Merged_Option extends Abstracts\Option {
+class Option_Merged extends Abstracts\Option {
 
 	/**
 	 * Load something.
