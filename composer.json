@@ -1,0 +1,25 @@
+{
+    "name": "figuren-theater/ft-options",
+    "description": "Options Management for WordPress Multisite",
+    "type": "wordpress-muplugin",
+    "license": "GPL-3",
+    "version": "1.0.0",
+    "extra": {
+        "installer-name": "Options"
+    },
+    "autoload": {
+        "psr-4": {
+            "Figuren_Theater\\Options\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Carsten Bach"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "figuren-theater/ft-core": "^1",
+        "composer/installers": "~1"
+    }
+}
