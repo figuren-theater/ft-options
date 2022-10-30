@@ -23,7 +23,7 @@ class Option_Merged extends Abstracts\Option {
 	/**
 	 * Load something.
 	 *
-	 * @package Figuren_Theater\Network\Interfaces\Loadable
+	 * @package Figuren_Theater\Core\Interfaces\Loadable
 	 * @since   2.10
 	 *
 	 * @return bool TRUE on success, FALSE otherwise.

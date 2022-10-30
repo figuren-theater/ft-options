@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Figuren_Theater\Options\Abstracts;
 
-use Figuren_Theater\Network\Interfaces;
+use Figuren_Theater\Core\Interfaces;
 use Figuren_Theater\Options\Interfaces as Options_Interfaces;
 
 
@@ -279,7 +279,7 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 	/**
 	 * Load something.
 	 *
-	 * @package Figuren_Theater\Network\Interfaces\Loadable
+	 * @package Figuren_Theater\Core\Interfaces\Loadable
 	 * @since   2.10
 	 *
 	 * @return bool TRUE on success, FALSE otherwise.
@@ -301,7 +301,7 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 	/**
 	 * Unload.
 	 *
-	 * @package Figuren_Theater\Network\Interfaces\Loadable
+	 * @package Figuren_Theater\Core\Interfaces\Loadable
 	 * @since   2.10
 	 *
 	 * @return bool TRUE on success, FALSE otherwise.
@@ -323,7 +323,7 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 	/**
 	 * Whether or not the resource has been loaded already.
 	 *
-	 * @package Figuren_Theater\Network\Interfaces\Loadable
+	 * @package Figuren_Theater\Core\Interfaces\Loadable
 	 * @since   2.10
 	 *
 	 * @return bool

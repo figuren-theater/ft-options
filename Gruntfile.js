@@ -32,7 +32,7 @@ module.exports = function( grunt ) {
 				options: {
 					domainPath: '/languages',
 					exclude: [ '\.git/*', 'bin/*', 'node_modules/*', 'tests/*' ],
-					mainFile: 'ft-options.php',
+					mainFile: 'plugin.php',
 					potFilename: 'ft-options.pot',
 					potHeaders: {
 						poedit: true,

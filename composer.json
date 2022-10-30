@@ -1,9 +1,9 @@
 {
     "name": "figuren-theater/ft-options",
-    "description": "Options Management for WordPress Multisite",
+    "description": "Options Management for a WordPress Multisite like figuren.theater",
     "type": "wordpress-muplugin",
     "license": "GPL-3",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "extra": {
         "installer-name": "Options"
     },
@@ -15,6 +15,18 @@
     "authors": [
         {
             "name": "Carsten Bach"
+        }
+    ],
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-core"
+        },
+        {
+            "type": "composer",
+            "url": "https://packagist.org"
         }
     ],
     "require": {
