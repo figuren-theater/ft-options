@@ -4,9 +4,6 @@
     "type": "wordpress-muplugin",
     "license": "GPL-3",
     "version": "1.1.2",
-    "extra": {
-        "installer-name": "Options"
-    },
     "autoload": {
         "psr-4": {
             "Figuren_Theater\\Options\\": "src/"
@@ -14,11 +11,10 @@
     },
     "authors": [
         {
-            "name": "Carsten Bach"
+            "name": "figuren.theater",
+            "email": "info@figuren.theater"
         }
     ],
-    "prefer-stable": true,
-    "minimum-stability": "dev",
     "repositories": [
         {
             "type": "git",
@@ -31,7 +27,7 @@
     ],
     "require": {
         "php": ">=7.1",
-        "figuren-theater/ft-core": "^1",
+        "figuren-theater/ft-core": "dev-master",
         "composer/installers": "~1"
     }
 }
