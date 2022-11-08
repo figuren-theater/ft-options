@@ -9,7 +9,7 @@ declare(strict_types=1);
  * Author URI:      https://figuren.theater
  * Text Domain:     ft-options
  * Domain Path:     /languages
- * Version:         1.1.3
+ * Version:         1.1.4
  *
  * @package         Figuren_Theater\Options
  */
