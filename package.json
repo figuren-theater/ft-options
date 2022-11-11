@@ -1,7 +1,7 @@
 
 {
   "name": "ft-options",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "main": "Gruntfile.js",
   "author": "Carsten Bach",
   "scripts" : {

@@ -7,9 +7,9 @@ declare(strict_types=1);
  * Description:     Options Management for a WordPress Multisite like figuren.theater
  * Author:          Carsten Bach
  * Author URI:      https://figuren.theater
- * Text Domain:     ft-options
+ * Text Domain:     figurentheater
  * Domain Path:     /languages
- * Version:         1.1.4
+ * Version:         1.1.5
  *
  * @package         Figuren_Theater\Options
  */

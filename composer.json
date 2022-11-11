@@ -2,32 +2,25 @@
     "name": "figuren-theater/ft-options",
     "description": "Options Management for a WordPress Multisite like figuren.theater",
     "type": "wordpress-muplugin",
-    "license": "GPL-3",
-    "version": "1.1.4",
-    "autoload": {
-        "psr-4": {
-            "Figuren_Theater\\Options\\": "src/"
-        }
-    },
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "figuren.theater",
             "email": "info@figuren.theater"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Figuren_Theater\\Options\\": "src/"
+        }
+    },
     "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-core"
-        },
         {
             "type": "composer",
             "url": "https://packagist.org"
         }
     ],
     "require": {
-        "php": ">=7.1",
-        "figuren-theater/ft-core": "^1",
-        "composer/installers": "~1"
+        "php": ">=7.1"
     }
 }
