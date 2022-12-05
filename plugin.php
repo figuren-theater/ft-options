@@ -5,11 +5,11 @@ declare(strict_types=1);
  * Plugin Name:     figuren.theater | Options
  * Plugin URI:      https://github.com/figuren-theater/ft-options
  * Description:     Options Management for a WordPress Multisite like figuren.theater
- * Author:          Carsten Bach
+ * Author:          figuren.theater
  * Author URI:      https://figuren.theater
  * Text Domain:     figurentheater
  * Domain Path:     /languages
- * Version:         1.1.5
+ * Version:         1.1.6
  *
  * @package         Figuren_Theater\Options
  */

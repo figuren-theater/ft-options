@@ -1,25 +1,32 @@
 {
     "name": "figuren-theater/ft-options",
     "description": "Options Management for a WordPress Multisite like figuren.theater",
+    "homepage": "https://websites.fuer.figuren.theater",
     "type": "wordpress-muplugin",
+    "keywords": ["wordpress", "multisite", "options", "settings"],
     "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "figuren.theater",
             "email": "info@figuren.theater"
+        },
+        {
+            "name": "Carsten Bach",
+            "email": "mail@carsten-bach.de",
+            "homepage": "https://carsten-bach.de",
+            "role": "Developer"
         }
     ],
+    "support": {
+        "email": "info@figuren.theater",
+        "issues": "https://github.com/figuren-theater/ft-options/issues",
+        "source": "https://github.com/figuren-theater/ft-options"
+    },
     "autoload": {
         "psr-4": {
-            "Figuren_Theater\\Options\\": "src/"
+            "Figuren_Theater\\Options\\": "inc/"
         }
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packagist.org"
-        }
-    ],
     "require": {
         "php": ">=7.1"
     }
