@@ -52,9 +52,12 @@ class Option_Synced extends Abstracts\Option {
 	 *
 	 * Defaults to get all synced option values from https://figuren.theater, 
 	 * which can be filtered seperately per option using 
-	 * 'Figuren_Theater\Options\Option_Synced\{$option_name}\remote_blog_id'.
+	 * 'Figuren_Theater\Options\Option_Synced\{$option_name}\remote_blog_id'
+	 * or for all options at once using
+	 * 'Figuren_Theater\Options\Option_Synced\remote_blog_id'.
 	 *
 	 * @since      2.10
+	 * @since      2.12 Added filter to set remote_blog_id for all options at once.
 	 *
 	 * @param      int $remote_blog_id Blog ID where to retrieve this option from. Defaults to https://figuren.theater.
 	 */
@@ -89,10 +92,37 @@ class Option_Synced extends Abstracts\Option {
 			$this
 		);
 
+
+		// create a nice name for the filter hook 
+		// a little complicated, but useful
+		$_hook_name = join(
+			'\\',
+			[
+				__NAMESPACE__,
+				__CLASS__,
+				'remote_blog_id',
+			]
+		);
+
+		/**
+		 * Filters the remote blog, where to retrieve the option from.
+		 *
+		 * @since 2.12
+		 *
+		 * @param int     $id    Blog ID.
+		 * @param object  $this  This option object.
+		 */
+		$remote_blog_id = (int) \apply_filters( 
+			$_hook_name, 
+			$remote_blog_id, 
+			$this
+		);
+
 		// everything ok
 		if ( ! empty( $remote_blog_id ) )
 			$this->remote_blog_id = $remote_blog_id;
 	}
+
 
 	/**
 	 * Get Option value from a remote blog.
