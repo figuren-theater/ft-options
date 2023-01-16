@@ -28,6 +28,7 @@
         }
     },
     "require": {
-        "php": ">=7.1"
+        "php": ">=7.1",
+        "markjaquith/wp-tlc-transients": "^1.0"
     }
 }
