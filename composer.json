@@ -1,6 +1,6 @@
 {
     "name": "figuren-theater/ft-options",
-    "description": "Options Management for a WordPress Multisite like figuren.theater",
+    "description": "Options management via code for a WordPress multisite like figuren.theater",
     "homepage": "https://websites.fuer.figuren.theater",
     "type": "wordpress-muplugin",
     "keywords": ["wordpress", "multisite", "options", "settings"],
