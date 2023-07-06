@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Figuren_Theater\Options\Abstracts;
 
-use Figuren_Theater\Core\Interfaces;
+use Figuren_Theater\Core;
 use Figuren_Theater\Options\Interfaces as Options_Interfaces;
 
 
@@ -18,7 +18,7 @@ use Figuren_Theater\Options\Interfaces as Options_Interfaces;
  *
  * @package Figuren_Theater\Options\Abstracts
  */
-abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option {
+abstract class Option implements Core\Loadable, Options_Interfaces\Option {
 
 	/**
 	 * The name of the option.
@@ -36,9 +36,9 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 
 	/**
 	 * Origin this Option comes from, could be
-	 * either 'core' or the usually the plugins basename, 
+	 * either 'core' or the usually the plugins basename,
 	 * e.g. 'gutenberg/gutenberg.php'.
-	 * 
+	 *
 	 * @var string
 	 */
 	public string $origin = 'core'; // or e.g. plugin-basename
@@ -46,7 +46,7 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 	/**
 	 * The type of option (in WordPress vocabulary).
 	 * Could be either 'option' or 'site_option'.
-	 * 
+	 *
 	 * @var string
 	 */
 	public string $type = 'option'; // or 'site_option'
@@ -61,38 +61,38 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 	public string $identifier;
 
 	/**
-	 * Filter hook to use 
+	 * Filter hook to use
 	 * to handle this special option
 	 *
 	 * Possible values are:
 	 * - `pre_option_static`
 	 * - `pre_site_option_static`
 	 * - ..
-	 * 
+	 *
 	 * @var string
 	 */
 	public string $filter_hook;
 
 	/**
 	 * Callable function to return this options value.
-	 * 
+	 *
 	 * @var callable
 	 */
 	public $filter_callback;
 
 	/**
 	 * The Priority add which to load this filter
-	 * 
+	 *
 	 * @var int
 	 */
 	public int $filter_priority = 0;
-	
+
 
 	/**
 	 * The number of arguments this filter can handle.
 	 *
 	 * Typically normal options take 3, site_options take 4 arguments.
-	 * 
+	 *
 	 * @var int
 	 */
 	public int $filter_arguments = 3;
@@ -100,7 +100,7 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 
 	/**
 	 * Whether or not the resource has been loaded already.
-	 * 
+	 *
 	 * @var bool
 	 */
 	protected bool $loaded = false;
@@ -112,7 +112,7 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 	 * - 'un_autoload' (default)
 	 * - 'autoload'
 	 * - 'delete'
-	 * 
+	 *
 	 * @var string
 	 */
 	public string $db_strategy = 'un_autoload';
@@ -128,14 +128,14 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 	 * @param   string $type   The type of option, could be either 'option' or 'site_option'.
 	 */
 	public function __construct( $name, $value, $origin = 'core', $type = 'option' ) {
-		
-		if ( 
+
+		if (
 			$this->set_name( $name ) &&
 			$this->set_value( $value ) &&
 			$this->set_origin( $origin ) &&
-			$this->set_type( $type ) 
+			$this->set_type( $type )
 		) {
-			// Define identifier, 
+			// Define identifier,
 			// we often need this string like that.
 			$this->identifier = join( '_', [ $this->type, $this->name ] );
 
@@ -145,7 +145,7 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 			// Set action, to be used as callback for the pre-option-filter.
 			$this->set_filter_callback();
 
-			// We survived all error checking and 
+			// We survived all error checking and
 			// can safely add this option
 			// to our collection.
 			$this->add_to_collection();
@@ -155,7 +155,7 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 
 	/**
 	 * Defines the name of the option.
-	 * 
+	 *
 	 * The name may be or is already used as a *meta_key* in the `wp_options` or `wp_sitemeta` DB tables.
 	 *
 	 * @package    Figuren_Theater\Options\Interfaces
@@ -180,13 +180,13 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 	 *
 	 * @package    Figuren_Theater\Options\Interfaces
 	 * @since      1.1
-	 * 
+	 *
 	 * @param      mixed $value The options value to set.
 	 *
 	 * @return     bool Whether value is set or not.
 	 */
 	public function set_value( $value ) : bool {
-		// check only against type of FALSE 
+		// check only against type of FALSE
 		// to keep the possibility for the value to be '0' (zero)
 		if ( false !== $value ) {
 			$this->value = $value;
@@ -198,8 +198,8 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 	}
 
 	/**
-	 * Defines where this Option comes from, could be 
-	 * either 'core' or the usually the plugins basename, 
+	 * Defines where this Option comes from, could be
+	 * either 'core' or the usually the plugins basename,
 	 * e.g. 'gutenberg/gutenberg.php'.
 	 *
 	 * @since  1.1
@@ -219,7 +219,7 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 	 * Defines the type of option (in WordPress vocabulary).
 	 *
 	 * @since  1.1
-	 * 
+	 *
 	 * @param  string $type Allowed values are only: `'option'` or `'site_option'`.
 	 *
 	 * @return string Could only be `'option'` or `'site_option'`.
@@ -242,8 +242,8 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 	 * @param   callable $callback Callable function or method to use as action, to hook onto this options filter.
 	 */
 	public function set_filter_callback( $callback = null ) : void {
-		
-		// default 
+
+		// default
 		$this->filter_callback = [ $this, 'get_value' ];
 
 		if ( is_callable( $callback ) ) {
@@ -279,7 +279,7 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 	/**
 	 * Load something.
 	 *
-	 * @package Figuren_Theater\Core\Interfaces\Loadable
+	 * @package Figuren_Theater\Core\Loadable
 	 * @since   2.10
 	 *
 	 * @return bool TRUE on success, FALSE otherwise.
@@ -288,7 +288,7 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 		if ( $this->should_load() ) {
 			// this could be a little tricky because
 			// add_filter always returns true!
-			$this->loaded = \add_filter( 
+			$this->loaded = \add_filter(
 				$this->filter_hook,
 				$this->filter_callback,
 				$this->filter_priority,
@@ -301,21 +301,21 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 	/**
 	 * Unload.
 	 *
-	 * @package Figuren_Theater\Core\Interfaces\Loadable
+	 * @package Figuren_Theater\Core\Loadable
 	 * @since   2.10
 	 *
 	 * @return bool TRUE on success, FALSE otherwise.
 	 */
 	public function unload() : bool {
 
-		// remove filter to prevent infinite loop 
+		// remove filter to prevent infinite loop
 		// inside of get_option() (where we are right now ;)
-		$_removed = \remove_filter( 
+		$_removed = \remove_filter(
 			$this->filter_hook,
 			$this->filter_callback,
 			$this->filter_priority,
 		);
-		
+
 		$this->loaded = ! $_removed;
 		return $_removed;
 	}
@@ -323,7 +323,7 @@ abstract class Option implements Interfaces\Loadable, Options_Interfaces\Option 
 	/**
 	 * Whether or not the resource has been loaded already.
 	 *
-	 * @package Figuren_Theater\Core\Interfaces\Loadable
+	 * @package Figuren_Theater\Core\Loadable
 	 * @since   2.10
 	 *
 	 * @return bool
