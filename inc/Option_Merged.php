@@ -23,19 +23,19 @@ class Option_Merged extends Abstracts\Option {
 	/**
 	 * Load something.
 	 *
-	 * @package Figuren_Theater\Core\Interfaces\Loadable
+	 * @package Figuren_Theater\Core\Loadable
 	 * @since   2.10
 	 *
 	 * @return bool TRUE on success, FALSE otherwise.
 	 */
 	public function load() : bool {
-		
+
 		if ( ! $this->should_load() )
 			return false;
 
 		// this should help saving
 		$_this = $this;
-		\add_filter( 
+		\add_filter(
 			"default_{$this->identifier}",
 			static function() use ( $_this ) {
 				return $_this->value;
@@ -60,7 +60,7 @@ class Option_Merged extends Abstracts\Option {
 	public function get_value() : mixed {
 
 
-		// remove filter to prevent infinite loop 
+		// remove filter to prevent infinite loop
 		// inside of get_option() (where we are right now ;)
 		$this->unload();
 
