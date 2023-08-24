@@ -30,5 +30,15 @@
     "require": {
         "php": ">=7.1",
         "markjaquith/wp-tlc-transients": "^1.0"
+    },
+    "require-dev": {
+        "figuren-theater/code-quality": "^0.6.6"
+    },
+    "config": {
+        "allow-plugins": {
+            "phpstan/extension-installer": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "ergebnis/composer-normalize": true
+        }
     }
 }
