@@ -1,8 +1,8 @@
 <?php
 /**
  * Factory to instantiate multiple Options at once.
- * 
- * @package    Figuren_Theater\Options
+ *
+ * @package    figuren-theater\ft-options
  */
 
 declare(strict_types=1);
@@ -11,7 +11,7 @@ namespace Figuren_Theater\Options;
 
 /**
  * Factory to instantiate multiple Options at once.
- * 
+ *
  * @package    Figuren_Theater\Options
  * @since      1.1
  * @since      2.10 Renamed from former 'Option__Factory'.
@@ -32,7 +32,7 @@ class Factory {
 	 */
 	public function __construct( array $options, $class = __NAMESPACE__ . '\\Option', $origin = 'core', $type = 'option' ) {
 		if ( ! empty( $options ) ) {
-			foreach ($options as $key => $value) {
+			foreach ( $options as $key => $value ) {
 				new $class( $key, $value, $origin, $type );
 			}
 		}

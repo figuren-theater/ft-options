@@ -1,8 +1,8 @@
 <?php
 /**
  * Collection of all options and site_options managed by the plattform using a Static Proxy.
- * 
- * @package Figuren_Theater\Options
+ *
+ * @package figuren-theater\ft-options
  */
 
 declare(strict_types=1);
@@ -13,7 +13,7 @@ use Figuren_Theater\SiteParts;
 
 /**
  * Collection of all options and site_options managed by the plattform using a Static Proxy.
- * 
+ *
  * @package Figuren_Theater\Options
  * @since   1.1
  */
@@ -41,11 +41,11 @@ final class Collection extends SiteParts\SitePartsCollectionAbstract {
 
 /**
  * Register the Collection to the API, for instant availability.
- * 
+ *
  * Later, call it via the API like so:
  * `\Figuren_Theater\API::get('Options')->get|add|remove()`
- * 
- * 
+ *
+ *
  * Or call the collection the 'normal' way:
  * ```
  * Collection::add( 'some option', 'value'),

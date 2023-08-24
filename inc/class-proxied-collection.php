@@ -3,7 +3,7 @@
  * Collection of WordPress Options
  * managed by the Plattform.
  *
- * @package Figuren_Theater\Options
+ * @package figuren-theater\ft-options
  */
 
 declare(strict_types=1);
@@ -28,7 +28,7 @@ final class Proxied_Collection extends SiteParts\ProxiedSitePartsCollectionAbstr
 	 * not do any checking on its values.
 	 *
 	 * @since  1.1
-	 * 
+	 *
 	 * @param  mixed $input Could be anything,
 	 *                      but are typically our SiteParts.
 	 *

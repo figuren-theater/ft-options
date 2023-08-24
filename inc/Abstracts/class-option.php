@@ -2,7 +2,7 @@
 /**
  * Abstract Option class which can be used as is, or extended.
  *
- * @package Figuren_Theater\Options\Abstracts
+ * @package figuren-theater\ft-options
  */
 
 declare(strict_types=1);
@@ -11,7 +11,6 @@ namespace Figuren_Theater\Options\Abstracts;
 
 use Figuren_Theater\Core;
 use Figuren_Theater\Options\Interfaces as Options_Interfaces;
-
 
 /**
  * Abstract Option class which can be used as is, or extended.
@@ -41,7 +40,7 @@ abstract class Option implements Core\Loadable, Options_Interfaces\Option {
 	 *
 	 * @var string
 	 */
-	public string $origin = 'core'; // or e.g. plugin-basename
+	public string $origin = 'core';
 
 	/**
 	 * The type of option (in WordPress vocabulary).
@@ -49,7 +48,7 @@ abstract class Option implements Core\Loadable, Options_Interfaces\Option {
 	 *
 	 * @var string
 	 */
-	public string $type = 'option'; // or 'site_option'
+	public string $type = 'option';
 
 	/**
 	 * Identifier for this option, as it is used as the unique name inside the Collection.
@@ -87,7 +86,6 @@ abstract class Option implements Core\Loadable, Options_Interfaces\Option {
 	 */
 	public int $filter_priority = 0;
 
-
 	/**
 	 * The number of arguments this filter can handle.
 	 *
@@ -96,7 +94,6 @@ abstract class Option implements Core\Loadable, Options_Interfaces\Option {
 	 * @var int
 	 */
 	public int $filter_arguments = 3;
-
 
 	/**
 	 * Whether or not the resource has been loaded already.
@@ -139,7 +136,7 @@ abstract class Option implements Core\Loadable, Options_Interfaces\Option {
 			// we often need this string like that.
 			$this->identifier = join( '_', [ $this->type, $this->name ] );
 
-			// Set the filter hook, to which the filtered option will be returned
+			// Set the filter hook, to which the filtered option will be returned.
 			$this->filter_hook = join( '_', [ 'pre', $this->identifier ] );
 
 			// Set action, to be used as callback for the pre-option-filter.
@@ -151,7 +148,6 @@ abstract class Option implements Core\Loadable, Options_Interfaces\Option {
 			$this->add_to_collection();
 		}
 	}
-
 
 	/**
 	 * Defines the name of the option.
@@ -166,9 +162,8 @@ abstract class Option implements Core\Loadable, Options_Interfaces\Option {
 	 * @return     string The name of the option, without any prefixes, just the name.
 	 */
 	public function set_name( $name ) : string {
-		// guard clauses
-		// are safer than type casting on the function|method calls,
-		// because we avoid fatal PHP errors
+		// Guard clauses are safer than type casting on the function|method calls,
+		// because we avoid fatal PHP errors.
 		if ( is_string( $name ) && ! empty( $name ) ) {
 			$this->name = $name;
 			return $this->name;
@@ -186,12 +181,12 @@ abstract class Option implements Core\Loadable, Options_Interfaces\Option {
 	 * @return     bool Whether value is set or not.
 	 */
 	public function set_value( $value ) : bool {
-		// check only against type of FALSE
-		// to keep the possibility for the value to be '0' (zero)
+		// Check only against type of FALSE
+		// to keep the possibility for the value to be '0' (zero).
 		if ( false !== $value ) {
 			$this->value = $value;
-			// do not return the value,
-			// in case it is zero
+			// Do not return the value,
+			// in case it is zero.
 			return true;
 		}
 		return false;
@@ -227,7 +222,7 @@ abstract class Option implements Core\Loadable, Options_Interfaces\Option {
 	public function set_type( $type ) : string {
 		if ( in_array( $type, [ 'option', 'site_option' ], true ) ) {
 			$this->type = $type;
-			// unset db_strategy for site_options
+			// Unset db_strategy for site_options.
 			$this->db_strategy = 'option' === $type ? $this->db_strategy : '';
 
 			return $this->type;
@@ -243,16 +238,13 @@ abstract class Option implements Core\Loadable, Options_Interfaces\Option {
 	 */
 	public function set_filter_callback( $callback = null ) : void {
 
-		// default
+		// This is the default.
 		$this->filter_callback = [ $this, 'get_value' ];
 
 		if ( is_callable( $callback ) ) {
 			$this->filter_callback = $callback;
 		}
 	}
-
-
-
 
 	/**
 	 * Get Option value.
@@ -292,7 +284,7 @@ abstract class Option implements Core\Loadable, Options_Interfaces\Option {
 				$this->filter_hook,
 				$this->filter_callback,
 				$this->filter_priority,
-				$this->filter_arguments,
+				$this->filter_arguments
 			);
 		}
 		return $this->loaded;
@@ -308,12 +300,12 @@ abstract class Option implements Core\Loadable, Options_Interfaces\Option {
 	 */
 	public function unload() : bool {
 
-		// remove filter to prevent infinite loop
-		// inside of get_option() (where we are right now ;)
+		// Remove filter to prevent infinite loop
+		// inside of get_option() (where we are right now ;) !
 		$_removed = \remove_filter(
 			$this->filter_hook,
 			$this->filter_callback,
-			$this->filter_priority,
+			$this->filter_priority
 		);
 
 		$this->loaded = ! $_removed;

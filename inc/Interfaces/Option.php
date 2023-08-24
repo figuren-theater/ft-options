@@ -2,7 +2,7 @@
 /**
  * Basic contract for options.
  *
- * @package Figuren_Theater\Options\Interfaces
+ * @package figuren-theater\ft-options
  */
 
 declare(strict_types=1);
@@ -18,7 +18,7 @@ interface Option {
 
 	/**
 	 * Defines the name of the option.
-	 * 
+	 *
 	 * The name may be or is already used as a *meta_key* in the `wp_options` or `wp_sitemeta` DB tables.
 	 *
 	 * @package    Figuren_Theater\Options\Interfaces
@@ -35,7 +35,7 @@ interface Option {
 	 *
 	 * @package    Figuren_Theater\Options\Interfaces
 	 * @since      1.1
-	 * 
+	 *
 	 * @param      mixed $value The options value to set.
 	 *
 	 * @return     bool Whether value is set or not.
