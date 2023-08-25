@@ -11,6 +11,17 @@ namespace Figuren_Theater\Options;
 
 use Figuren_Theater\SiteParts;
 
+use function add_option;
+use function apply_filters;
+use function delete_option;
+use function get_option;
+use function wp_cache_delete;
+use function wp_installing;
+use function wp_list_filter;
+use function wp_list_sort;
+use function wp_next_scheduled;
+use function wp_schedule_event;
+
 /**
  * Manager for all options, site_options and their DB handling.
  *
@@ -39,7 +50,7 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 	 *
 	 * @since  1.1
 	 *
-	 * @return array
+	 * @return array<string, string|array<int, mixed>>
 	 */
 	public static function get_subscribed_events() : array {
 		return [
@@ -54,9 +65,6 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 			'load-options-general.php' => 'register_cron_cleanup',
 			// Hooked as sheduled action once a week.
 			'ft_db_cleanup'            => 'run_cron_cleanup',
-
-			// phpcs:ignore Squiz.PHP.CommentedOutCode.Found
-			// 'init'                  => [ 'debug_ft_Manager', 42 ],
 		];
 	}
 
@@ -82,11 +90,11 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 		// so we've to get this in two rounds.
 
 		// 1. core options
-		$_core_options = \wp_list_filter( $_all_options, [ 'origin' => 'core' ] );
+		$_core_options = wp_list_filter( $_all_options, [ 'origin' => 'core' ] );
 		// 2. handle site_options before, options, so we need DESC
-		$_core_options = \wp_list_sort( $_core_options, 'type', 'DESC', true );
+		$_core_options = wp_list_sort( $_core_options, 'type', 'DESC', true );
 		// 3. get all other (aka plugin-) options
-		$_other_options = \wp_list_filter( $_all_options, [ 'origin' => 'core' ], 'NOT' );
+		$_other_options = wp_list_filter( $_all_options, [ 'origin' => 'core' ], 'NOT' );
 
 		$_sorted_options = $_core_options + $_other_options;
 
@@ -117,7 +125,7 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 	public function new_set_and_cleanup_db() : void {
 
 		// Make sure we start fresh.
-		\wp_cache_delete( 'alloptions', 'options' );
+		wp_cache_delete( 'alloptions', 'options' );
 
 		// 1. get all options we handle
 		// (2. array_diff against wp_load_alloptions() )
@@ -133,7 +141,7 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 				case 'delete':
 					// Make sure we start fresh,
 					// just deleting the option entirely, without re-setting it.
-					\delete_option( $option->name );
+					delete_option( $option->name );
 					break;
 
 				// v1 - soft version // !
@@ -167,8 +175,8 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 	 * @since     2.10
 	 */
 	public function register_cron_cleanup() : void {
-		if ( ! \wp_next_scheduled( 'ft_db_cleanup' ) && ! \wp_installing() ) {
-			\wp_schedule_event( time(), 'weekly', 'ft_db_cleanup' );
+		if ( ! wp_next_scheduled( 'ft_db_cleanup' ) && ! wp_installing() ) {
+			wp_schedule_event( time(), 'weekly', 'ft_db_cleanup' );
 		}
 	}
 
@@ -210,7 +218,9 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 	 *
 	 * @since   2.10
 	 *
-	 * @param   array $options Array of option-names, or array with option-names as indexes and option-values to set.
+	 * @param   string[]|array<string, mixed> $options Array of option-names, or array with option-names as indexes and option-values to set.
+	 *
+	 * @return void
 	 */
 	protected function un_autoload_options( array $options = [] ) : void {
 
@@ -244,7 +254,7 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 		 * @param array   $options Array with all options to un-autoload.
 		 * @param object  $options_manager The Options-Manager object.
 		 */
-		$options = \apply_filters(
+		$options = apply_filters(
 			$_hook_name,
 			$options,
 			$options_manager
@@ -273,7 +283,7 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 
 		// Get a $value, if none.
 		if ( null === $value ) {
-			$value = \get_option( $name, null );
+			$value = get_option( $name, null );
 		}
 		// bail, if it's still NULL.
 		if ( null === $value ) {
@@ -287,16 +297,18 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 		// \update_option( $name, $value, 'no' )
 		//
 		// so we go for delete_ and add_option()
-		\delete_option( $name );
-		return \add_option( $name, $value, '', 'no' );
+		delete_option( $name );
+		return add_option( $name, $value, '', 'no' );
 	}
 
 	/**
 	 * Delete multiple options from the DB at once, by a list of option-names.
 	 *
-	 * @since   2.10
+	 * @since  2.10
 	 *
-	 * @param   array $options Array of strings with all option-names to delete.
+	 * @param  string[] $options Array of strings with all option-names to delete.
+	 *
+	 * @return void
 	 */
 	protected function delete_options( array $options = [] ) : void {
 
@@ -341,55 +353,26 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 			]
 		);
 
+		// Allow to use '$this' in an anonymous function, later on.
+		$options_manager = $this;
+
 		/**
 		 * Filters the options before they are deleted from the DB.
 		 *
-		 * @since 2.10
+		 * @since  2.10
 		 *
-		 * @param array   $options Array with all options to delete.
-		 * @param object  $this    This Manager object.
+		 * @param  string[]  $options            Array with all options to delete.
+		 * @param  object    $options_manager    This Manager object.
+		 *
+		 * @return string[]
 		 */
-		$options = \apply_filters(
+		$options = apply_filters(
 			$_hook_name,
 			$options,
-			$this
+			$options_manager
 		);
 
-		array_walk( $options, 'delete_option' );
-	}
-
-	/**
-	 * Misc. debug tools and or tests.
-	 *
-	 * @ignore
-	 */
-	public function debug_ft_Manager() {
-
-		// meta.f.test // !
-		// phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedIf
-		if ( 4 === \get_current_blog_id() ) {
-
-			// 1.
-			// delete all statically handled options
-			// but only run once
-			//
-			// $this->new_set_and_cleanup_db(); // WORKING
-
-			// 2.
-			// set autoload="no" for some un-managed options,
-			// that are being filtered somehow later
-			//
-			// $this->un_autoload_options(); // WORKING
-
-			// 3.
-			// only delete options,
-			// w/o adding a pre_option_ filter
-			//
-			// theese options are either 100% filtered or really old and deprecated
-			// so they can be removed
-			//
-			// $this->delete_options(); // WORKING
-		}
+		\array_walk( $options, 'delete_option' );
 	}
 
 }

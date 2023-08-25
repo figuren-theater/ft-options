@@ -64,6 +64,9 @@ class Option_Synced extends Abstracts\Option {
 	 */
 	public function set_remote_blog_id( int $remote_blog_id = 1 ) : void {
 
+		// Allow to use '$this' in an anonymous function, later on.
+		$option_synced = $this;
+
 		// Create a nice name for the filter hook
 		// (a little complicated, but useful).
 		$_hook_name = join(
@@ -71,7 +74,7 @@ class Option_Synced extends Abstracts\Option {
 			[
 				__NAMESPACE__,
 				__CLASS__,
-				$this->name,
+				$option_synced->name,
 				'remote_blog_id',
 			]
 		);
@@ -79,17 +82,19 @@ class Option_Synced extends Abstracts\Option {
 		/**
 		 * Filters the remote blog, where to retrieve the option from.
 		 *
-		 * The dynamic portion of the hook name, `$this->name`, refers to the option name.
+		 * The dynamic portion of the hook name, `$option_synced->name`, refers to the option name.
 		 *
 		 * @since 2.10
 		 *
-		 * @param int     $id    Blog ID.
-		 * @param object  $this  This option object.
+		 * @param int            $id             Blog ID.
+		 * @param Option_Synced  $option_synced  This synced option object.
+		 *
+		 * @return int
 		 */
 		$remote_blog_id = (int) \apply_filters(
 			$_hook_name,
 			$remote_blog_id,
-			$this
+			$option_synced
 		);
 
 		// Create a nice name for the filter hook
@@ -108,18 +113,20 @@ class Option_Synced extends Abstracts\Option {
 		 *
 		 * @since 2.12
 		 *
-		 * @param int     $id    Blog ID.
-		 * @param object  $this  This option object.
+		 * @param int            $id             Blog ID.
+		 * @param Option_Synced  $option_synced  This synced option object.
+		 *
+		 * @return int
 		 */
 		$remote_blog_id = (int) \apply_filters(
 			$_hook_name,
 			$remote_blog_id,
-			$this
+			$option_synced
 		);
 
 		// Is everything ok?
 		if ( ! empty( $remote_blog_id ) ) {
-			$this->remote_blog_id = $remote_blog_id;
+			$option_synced->remote_blog_id = $remote_blog_id;
 		}
 	}
 

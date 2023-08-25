@@ -70,7 +70,7 @@ class Option_Merged extends Abstracts\Option {
 		// Re-add filter.
 		$this->load();
 
-		if ( ! is_array( $_db_option ) || empty( $_db_option ) ) {
+		if ( ! is_array( $_db_option ) || empty( $_db_option ) || ! is_array( $this->value ) ) {
 			return $this->value;
 		}
 
