@@ -10,7 +10,7 @@ namespace Figuren_Theater\Options\Interfaces;
 /**
  * Basic contract for options.
  *
- * @package Figuren_Theater\Options\Interfaces
+ * @package figuren-theater\ft-options
  */
 interface Option {
 
@@ -19,7 +19,7 @@ interface Option {
 	 *
 	 * The name may be or is already used as a *meta_key* in the `wp_options` or `wp_sitemeta` DB tables.
 	 *
-	 * @package    Figuren_Theater\Options\Interfaces
+	 * @package    figuren-theater\ft-options
 	 * @since      1.1
 	 *
 	 * @param      string $name Option name to set.
@@ -31,7 +31,7 @@ interface Option {
 	/**
 	 * Defines the value of this option.
 	 *
-	 * @package    Figuren_Theater\Options\Interfaces
+	 * @package    figuren-theater\ft-options
 	 * @since      1.1
 	 *
 	 * @param      mixed $value The options value to set.
@@ -43,7 +43,7 @@ interface Option {
 	/**
 	 * Get Option value.
 	 *
-	 * @package    Figuren_Theater\Options\Interfaces
+	 * @package    figuren-theater\ft-options
 	 * @since      2.10
 	 *
 	 * @return     mixed|null Returns any option with the same name.
