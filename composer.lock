@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "75f020fe2c85d6e0e6fb35e28903aee9",
+    "content-hash": "cd82b55f1fb3916393f3f4ec16f83ac4",
     "packages": [
         {
             "name": "markjaquith/wp-tlc-transients",
@@ -624,16 +624,16 @@
         },
         {
             "name": "figuren-theater/code-quality",
-            "version": "0.6.6",
+            "version": "0.6.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/figuren-theater/code-quality.git",
-                "reference": "e75a8e42841f7637ee5c4b69c0bd3c55a07a4fbc"
+                "reference": "ca27c3c78a0dd83e37c2d0577e3aa177c558a072"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/figuren-theater/code-quality/zipball/e75a8e42841f7637ee5c4b69c0bd3c55a07a4fbc",
-                "reference": "e75a8e42841f7637ee5c4b69c0bd3c55a07a4fbc",
+                "url": "https://api.github.com/repos/figuren-theater/code-quality/zipball/ca27c3c78a0dd83e37c2d0577e3aa177c558a072",
+                "reference": "ca27c3c78a0dd83e37c2d0577e3aa177c558a072",
                 "shasum": ""
             },
             "require": {
@@ -673,7 +673,7 @@
                 "issues": "https://github.com/figuren-theater/code-quality/issues",
                 "source": "https://github.com/figuren-theater/code-quality"
             },
-            "time": "2023-07-17T18:30:13+00:00"
+            "time": "2023-08-25T09:07:27+00:00"
         },
         {
             "name": "figuren-theater/coding-standards",
@@ -1565,7 +1565,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1"
+        "php": ">=7.4"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
