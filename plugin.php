@@ -1,23 +1,54 @@
 <?php
-declare(strict_types=1);
-
 /**
- * Plugin Name:     figuren.theater | Options
- * Plugin URI:      https://github.com/figuren-theater/ft-options
- * Description:     Options Management for a WordPress multisite network like figuren.theater
- * Author:          figuren.theater
- * Author URI:      https://figuren.theater
- * Text Domain:     figurentheater
- * Domain Path:     /languages
- * Version:         1.1.10
+ * Options Management for a WordPress multisite network like figuren.theater
  *
- * @package         figuren-theater\ft-options
+ * @package           figuren-theater/ft-options
+ * @author            figuren.theater
+ * @copyright         2023 figuren.theater
+ * @license           GPL-3.0-or-later
+ *
+ * @wordpress-plugin
+ * Plugin Name:       figuren.theater | Options
+ * Plugin URI:        https://github.com/figuren-theater/ft-options
+ * Description:       Options Management for a WordPress multisite network like figuren.theater
+ * Version:           1.1.11
+ * Requires at least: 6.0
+ * Requires PHP:      7.4
+ * Author:            figuren.theater
+ * Author URI:        https://figuren.theater
+ * Text Domain:       figurentheater
+ * Domain Path:       /languages
+ * License:           GPL v3 or later
+ * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
+ * Update URI:        https://github.com/figuren-theater/ft-options
  */
+
+declare(strict_types=1);
 
 namespace Figuren_Theater\Options;
 
 const DIRECTORY = __DIR__;
 
+/**
+ * Register the Collection to the API, for instant availability.
+ *
+ * Later, call it via the API like so:
+ * `\Figuren_Theater\API::get('Options')->get|add|remove()`
+ *
+ *
+ * Or call the collection the 'normal' way:
+ * ```
+ * Collection::add( 'some option', 'value'),
+ * Collection::get( 'some option' ),
+ * Collection::remove( 'some option' ),
+ * Collection::get( 'myname' ),
+ * ```
+ */
+\Figuren_Theater\API::add( 'Options', __NAMESPACE__ . '\\Collection::get_collection' );
+
+/**
+ * Setup all Options as part of our Collection.
+ */
 \add_action(
 	'Figuren_Theater\init',
 	function ( $ft_site ) : void {
@@ -25,8 +56,6 @@ const DIRECTORY = __DIR__;
 		if ( ! is_a( $ft_site, 'Figuren_Theater\ProxiedSite' ) ) {
 			return;
 		}
-
-		// Setup all Options as part of our Collection.
 
 		// 1. Create Collection
 		$collection = Collection::get_collection();

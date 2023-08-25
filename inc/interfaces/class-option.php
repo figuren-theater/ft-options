@@ -5,8 +5,6 @@
  * @package figuren-theater\ft-options
  */
 
-declare(strict_types=1);
-
 namespace Figuren_Theater\Options\Interfaces;
 
 /**
