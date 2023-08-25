@@ -39,19 +39,3 @@ final class Collection extends SiteParts\SitePartsCollectionAbstract {
 	}
 }
 
-/**
- * Register the Collection to the API, for instant availability.
- *
- * Later, call it via the API like so:
- * `\Figuren_Theater\API::get('Options')->get|add|remove()`
- *
- *
- * Or call the collection the 'normal' way:
- * ```
- * Collection::add( 'some option', 'value'),
- * Collection::get( 'some option' ),
- * Collection::remove( 'some option' ),
- * Collection::get( 'myname' ),
- * ```
- */
-\Figuren_Theater\API::add( 'Options', __NAMESPACE__ . '\\Collection::get_collection' );
