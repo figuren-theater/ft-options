@@ -28,7 +28,7 @@ This is the long desc
 
 * [x] *list closed tracking-issues or `docs` files here*
 * [ ] Write better Readme
-* [ ] Do you have any [ideas](/issues/new) ?
+* [ ] Do you have any [ideas](https://github.com/figuren-theater/ft-options/issues/new) ?
 
 ## Background & Motivation
 
@@ -36,20 +36,10 @@ This is the long desc
 
 ## Install
 
-1. Add this repository to your `composer.json`
-```json
-"repositories": [
-    {
-        "type": "git",
-        "url": "https://github.com/figuren-theater/ft-options"
-    }
-]
-```
-
-2. Install via command line
-```sh
-composer require figuren-theater/ft-options
-```
+1. Install via command line
+	```sh
+	composer require figuren-theater/ft-options
+	```
 
 ## Usage
 
@@ -86,6 +76,8 @@ Accompaniying the core functionality of the mentioned plugins, theese **best pra
 ## Built with & uses
 
   - [dependabot](/.github/dependabot.yml)
+  - [code-quality](https://github.com/figuren-theater/code-quality/)
+     A set of status checks to ensure high and consitent code-quality for the figuren.theater platform.
   - ....
 
 ## Contributing
@@ -105,13 +97,13 @@ Don't forget to give the project a star! Thanks again!
 ## Versioning
 
 We use [Semantic Versioning](http://semver.org/) for versioning. For the versions
-available, see the [tags on this repository](/tags).
+available, see the [tags on this repository](https://github.com/figuren-theater/ft-options/tags).
 
 ## Authors
 
   - **Carsten Bach** - *Provided idea & code* - [figuren.theater/crew](https://figuren.theater/crew/)
 
-See also the list of [contributors](/contributors)
+See also the list of [contributors](https://github.com/figuren-theater/ft-options/contributors)
 who participated in this project.
 
 ## License
