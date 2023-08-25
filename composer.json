@@ -28,7 +28,7 @@
         "source": "https://github.com/figuren-theater/ft-options"
     },
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.4",
         "markjaquith/wp-tlc-transients": "^1.0"
     },
     "require-dev": {
