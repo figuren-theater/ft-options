@@ -161,10 +161,11 @@ abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces
 	public function set_name( $name ) : string {
 		// Guard clauses are safer than type casting on the function|method calls,
 		// because we avoid fatal PHP errors.
-		if ( is_string( $name ) && ! empty( $name ) ) {
-			$this->name = $name;
-			return $this->name;
+		if ( ! is_string( $name ) || empty( $name ) ) {
+			return '';
 		}
+		$this->name = $name;
+		return $this->name;
 	}
 
 	/**
@@ -201,10 +202,11 @@ abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces
 	 * @return string Could only be `'core'` or some `{$plugin_basename}`.
 	 */
 	public function set_origin( $origin ) : string {
-		if ( is_string( $origin ) && ! empty( $origin ) ) {
-			$this->origin = $origin;
-			return $this->origin;
+		if ( ! is_string( $origin ) || empty( $origin ) ) {
+			return '';
 		}
+		$this->origin = $origin;
+		return $this->origin;
 	}
 
 	/**
@@ -218,12 +220,13 @@ abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces
 	 */
 	public function set_type( $type ) : string {
 		if ( in_array( $type, [ 'option', 'site_option' ], true ) ) {
-			$this->type = $type;
-			// Unset db_strategy for site_options.
-			$this->db_strategy = 'option' === $type ? $this->db_strategy : '';
-
-			return $this->type;
+			return '';
 		}
+		$this->type = $type;
+		// Unset db_strategy for site_options.
+		$this->db_strategy = 'option' === $type ? $this->db_strategy : '';
+
+		return $this->type;
 	}
 
 	/**
