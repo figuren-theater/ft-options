@@ -7,7 +7,6 @@
 
 namespace Figuren_Theater\Options\Abstracts;
 
-use Figuren_Theater\Core;
 use Figuren_Theater\Options\Interfaces as Options_Interfaces;
 
 /**
@@ -15,7 +14,7 @@ use Figuren_Theater\Options\Interfaces as Options_Interfaces;
  *
  * @package Figuren_Theater\Options\Abstracts
  */
-abstract class Option implements Core\Loadable, Options_Interfaces\Option {
+abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces\Option {
 
 	/**
 	 * The name of the option.
