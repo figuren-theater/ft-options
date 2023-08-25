@@ -4,8 +4,206 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cd82b55f1fb3916393f3f4ec16f83ac4",
+    "content-hash": "b8e364e905d544318b5d559b7c81e118",
     "packages": [
+        {
+            "name": "composer/installers",
+            "version": "v1.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/installers.git",
+                "reference": "d20a64ed3c94748397ff5973488761b22f6d3f19"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/installers/zipball/d20a64ed3c94748397ff5973488761b22f6d3f19",
+                "reference": "d20a64ed3c94748397ff5973488761b22f6d3f19",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 || ^2.0"
+            },
+            "replace": {
+                "roundcube/plugin-installer": "*",
+                "shama/baton": "*"
+            },
+            "require-dev": {
+                "composer/composer": "1.6.* || ^2.0",
+                "composer/semver": "^1 || ^3",
+                "phpstan/phpstan": "^0.12.55",
+                "phpstan/phpstan-phpunit": "^0.12.16",
+                "symfony/phpunit-bridge": "^4.2 || ^5",
+                "symfony/process": "^2.3"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Composer\\Installers\\Plugin",
+                "branch-alias": {
+                    "dev-main": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Composer\\Installers\\": "src/Composer/Installers"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Robinson Young",
+                    "email": "kyle@dontkry.com",
+                    "homepage": "https://github.com/shama"
+                }
+            ],
+            "description": "A multi-framework Composer library installer",
+            "homepage": "https://composer.github.io/installers/",
+            "keywords": [
+                "Craft",
+                "Dolibarr",
+                "Eliasis",
+                "Hurad",
+                "ImageCMS",
+                "Kanboard",
+                "Lan Management System",
+                "MODX Evo",
+                "MantisBT",
+                "Mautic",
+                "Maya",
+                "OXID",
+                "Plentymarkets",
+                "Porto",
+                "RadPHP",
+                "SMF",
+                "Starbug",
+                "Thelia",
+                "Whmcs",
+                "WolfCMS",
+                "agl",
+                "aimeos",
+                "annotatecms",
+                "attogram",
+                "bitrix",
+                "cakephp",
+                "chef",
+                "cockpit",
+                "codeigniter",
+                "concrete5",
+                "croogo",
+                "dokuwiki",
+                "drupal",
+                "eZ Platform",
+                "elgg",
+                "expressionengine",
+                "fuelphp",
+                "grav",
+                "installer",
+                "itop",
+                "joomla",
+                "known",
+                "kohana",
+                "laravel",
+                "lavalite",
+                "lithium",
+                "magento",
+                "majima",
+                "mako",
+                "mediawiki",
+                "miaoxing",
+                "modulework",
+                "modx",
+                "moodle",
+                "osclass",
+                "pantheon",
+                "phpbb",
+                "piwik",
+                "ppi",
+                "processwire",
+                "puppet",
+                "pxcms",
+                "reindex",
+                "roundcube",
+                "shopware",
+                "silverstripe",
+                "sydes",
+                "sylius",
+                "symfony",
+                "tastyigniter",
+                "typo3",
+                "wordpress",
+                "yawik",
+                "zend",
+                "zikula"
+            ],
+            "support": {
+                "issues": "https://github.com/composer/installers/issues",
+                "source": "https://github.com/composer/installers/tree/v1.12.0"
+            },
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-09-13T08:19:44+00:00"
+        },
+        {
+            "name": "figuren-theater/deprecated_figuren_theater_v2",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/figuren-theater/deprecated__Figuren_Theater__v2",
+                "reference": "26f37cf047d484b9822df55f1e7627216f950b38"
+            },
+            "require": {
+                "composer/installers": "^1.12",
+                "php": ">=7.1"
+            },
+            "default-branch": true,
+            "type": "wordpress-muplugin",
+            "extra": {
+                "installer-name": "Figuren_Theater"
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "figuren.theater",
+                    "email": "info@figuren.theater"
+                },
+                {
+                    "name": "Carsten Bach",
+                    "email": "mail@carsten-bach.de",
+                    "homepage": "https://carsten-bach.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "(Old & deprecated) Core (v2.*) components for a WordPress multisite plattform like figuren.theater",
+            "homepage": "https://websites.fuer.figuren.theater",
+            "keywords": [
+                "altis",
+                "composer",
+                "theater",
+                "wordpress"
+            ],
+            "support": {
+                "email": "info@figuren.theater",
+                "issues": "https://github.com/figuren-theater/deprecated__Figuren_Theater__v2/issues",
+                "source": "https://github.com/figuren-theater/deprecated__Figuren_Theater__v2"
+            },
+            "time": "2023-08-13T23:29:08+00:00"
+        },
         {
             "name": "markjaquith/wp-tlc-transients",
             "version": "1.0",
@@ -628,12 +826,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/figuren-theater/code-quality.git",
-                "reference": "ca27c3c78a0dd83e37c2d0577e3aa177c558a072"
+                "reference": "f4bd68b3e579543d09fa9d1435d758501731fcb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/figuren-theater/code-quality/zipball/ca27c3c78a0dd83e37c2d0577e3aa177c558a072",
-                "reference": "ca27c3c78a0dd83e37c2d0577e3aa177c558a072",
+                "url": "https://api.github.com/repos/figuren-theater/code-quality/zipball/f4bd68b3e579543d09fa9d1435d758501731fcb1",
+                "reference": "f4bd68b3e579543d09fa9d1435d758501731fcb1",
                 "shasum": ""
             },
             "require": {
@@ -673,20 +871,20 @@
                 "issues": "https://github.com/figuren-theater/code-quality/issues",
                 "source": "https://github.com/figuren-theater/code-quality"
             },
-            "time": "2023-08-25T09:07:27+00:00"
+            "time": "2023-08-25T09:10:34+00:00"
         },
         {
             "name": "figuren-theater/coding-standards",
-            "version": "0.3.2",
+            "version": "0.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/figuren-theater/coding-standards.git",
-                "reference": "4a2e3ffd2b94b1e2d3aee35cccd9fa1eed84dbec"
+                "reference": "42929bf1e4c18f6ea16ec0a935b001548b825b5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/figuren-theater/coding-standards/zipball/4a2e3ffd2b94b1e2d3aee35cccd9fa1eed84dbec",
-                "reference": "4a2e3ffd2b94b1e2d3aee35cccd9fa1eed84dbec",
+                "url": "https://api.github.com/repos/figuren-theater/coding-standards/zipball/42929bf1e4c18f6ea16ec0a935b001548b825b5e",
+                "reference": "42929bf1e4c18f6ea16ec0a935b001548b825b5e",
                 "shasum": ""
             },
             "require": {
@@ -723,7 +921,7 @@
                 "issues": "https://github.com/figuren-theater/coding-standards/issues",
                 "source": "https://github.com/figuren-theater/coding-standards"
             },
-            "time": "2023-07-18T14:22:04+00:00"
+            "time": "2023-08-25T09:04:03+00:00"
         },
         {
             "name": "figuren-theater/phpstan",
@@ -1252,16 +1450,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.31",
+            "version": "1.10.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "c0eb159b598e2b637cbd52840e3d08f28d25dd47"
+                "reference": "c47e47d3ab03137c0e121e77c4d2cb58672f6d44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c0eb159b598e2b637cbd52840e3d08f28d25dd47",
-                "reference": "c0eb159b598e2b637cbd52840e3d08f28d25dd47",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c47e47d3ab03137c0e121e77c4d2cb58672f6d44",
+                "reference": "c47e47d3ab03137c0e121e77c4d2cb58672f6d44",
                 "shasum": ""
             },
             "require": {
@@ -1310,7 +1508,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-24T14:26:09+00:00"
+            "time": "2023-08-24T21:54:50+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -1560,9 +1758,9 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [],
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=7.4"

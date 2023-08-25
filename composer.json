@@ -29,11 +29,20 @@
     },
     "require": {
         "php": ">=7.4",
+        "figuren-theater/deprecated_figuren_theater_v2": "*",
         "markjaquith/wp-tlc-transients": "^1.0"
     },
     "require-dev": {
         "figuren-theater/code-quality": "^0.6.6"
     },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/deprecated__Figuren_Theater__v2"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Figuren_Theater\\Options\\": "inc/"
@@ -43,7 +52,8 @@
         "allow-plugins": {
             "phpstan/extension-installer": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
-            "ergebnis/composer-normalize": true
+            "ergebnis/composer-normalize": true,
+            "composer/installers": true
         }
     }
 }
