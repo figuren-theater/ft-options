@@ -33,7 +33,7 @@
         "markjaquith/wp-tlc-transients": "^1.0"
     },
     "require-dev": {
-        "figuren-theater/code-quality": "^0.6.6"
+        "figuren-theater/code-quality": "*"
     },
     "repositories": [
         {
