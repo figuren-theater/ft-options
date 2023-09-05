@@ -26,7 +26,7 @@ interface Option {
 	 *
 	 * @return     string The name of the option, without any prefixes, just the name.
 	 */
-	public function set_name( $name ) : string;
+	public function set_name( string $name ) : string;
 
 	/**
 	 * Defines the value of this option.

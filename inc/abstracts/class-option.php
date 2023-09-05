@@ -158,10 +158,10 @@ abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces
 	 *
 	 * @return     string The name of the option, without any prefixes, just the name.
 	 */
-	public function set_name( $name ) : string {
+	public function set_name( string $name ) : string {
 		// Guard clauses are safer than type casting on the function|method calls,
 		// because we avoid fatal PHP errors.
-		if ( ! is_string( $name ) || empty( $name ) ) {
+		if ( empty( $name ) ) {
 			return '';
 		}
 		$this->name = $name;
@@ -201,8 +201,8 @@ abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces
 	 *
 	 * @return string Could only be `'core'` or some `{$plugin_basename}`.
 	 */
-	public function set_origin( $origin ) : string {
-		if ( ! is_string( $origin ) || empty( $origin ) ) {
+	public function set_origin( string $origin ) : string {
+		if ( empty( $origin ) ) {
 			return '';
 		}
 		$this->origin = $origin;
