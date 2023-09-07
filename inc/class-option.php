@@ -2,7 +2,7 @@
 /**
  * Normal option
  *
- * @package Figuren_Theater\Options;
+ * @package figuren-theater\ft-options
  */
 
 declare(strict_types=1);

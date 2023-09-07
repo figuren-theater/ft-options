@@ -1,10 +1,14 @@
 {
     "name": "figuren-theater/ft-options",
     "description": "Options management via code for a WordPress multisite like figuren.theater",
-    "homepage": "https://websites.fuer.figuren.theater",
-    "type": "wordpress-muplugin",
-    "keywords": ["wordpress", "multisite", "options", "settings"],
     "license": "GPL-3.0-or-later",
+    "type": "wordpress-muplugin",
+    "keywords": [
+        "wordpress",
+        "multisite",
+        "options",
+        "settings"
+    ],
     "authors": [
         {
             "name": "figuren.theater",
@@ -17,18 +21,40 @@
             "role": "Developer"
         }
     ],
+    "homepage": "https://websites.fuer.figuren.theater",
     "support": {
         "email": "info@figuren.theater",
         "issues": "https://github.com/figuren-theater/ft-options/issues",
         "source": "https://github.com/figuren-theater/ft-options"
     },
+    "require": {
+        "php": ">=7.4",
+        "figuren-theater/deprecated_figuren_theater_v2": "dev-master",
+        "markjaquith/wp-tlc-transients": "^1.0"
+    },
+    "require-dev": {
+        "figuren-theater/code-quality": "*"
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/deprecated__Figuren_Theater__v2"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Figuren_Theater\\Options\\": "inc/"
         }
     },
-    "require": {
-        "php": ">=7.1",
-        "markjaquith/wp-tlc-transients": "^1.0"
+    "config": {
+        "allow-plugins": {
+            "phpstan/extension-installer": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "ergebnis/composer-normalize": true,
+            "composer/installers": true,
+            "koodimonni/composer-dropin-installer": true
+        }
     }
 }

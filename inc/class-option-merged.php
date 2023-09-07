@@ -2,7 +2,7 @@
 /**
  * Normal option, merged from the DB and static values provied by this option.
  *
- * @package Figuren_Theater\Options;
+ * @package figuren-theater\ft-options
  */
 
 declare(strict_types=1);
@@ -30,10 +30,11 @@ class Option_Merged extends Abstracts\Option {
 	 */
 	public function load() : bool {
 
-		if ( ! $this->should_load() )
+		if ( ! $this->should_load() ) {
 			return false;
+		}
 
-		// this should help saving
+		// This should help saving.
 		$_this = $this;
 		\add_filter(
 			"default_{$this->identifier}",
@@ -41,7 +42,7 @@ class Option_Merged extends Abstracts\Option {
 				return $_this->value;
 			},
 			$this->filter_priority,
-			$this->filter_arguments,
+			$this->filter_arguments
 		);
 
 		parent::load();
@@ -59,19 +60,19 @@ class Option_Merged extends Abstracts\Option {
 	 */
 	public function get_value() : mixed {
 
-
-		// remove filter to prevent infinite loop
-		// inside of get_option() (where we are right now ;)
+		// Remove filter to prevent infinite loop
+		// inside of get_option() (where we are right now ;) !
 		$this->unload();
 
-		// get DB option from blog with given ID
+		// Get DB option from blog with given ID.
 		$_db_option = \get_option( $this->name );
 
-		// re-add filter
+		// Re-add filter.
 		$this->load();
 
-		if ( ! is_array( $_db_option ) || empty( $_db_option ) )
+		if ( ! is_array( $_db_option ) || empty( $_db_option ) || ! is_array( $this->value ) ) {
 			return $this->value;
+		}
 
 		// else ...
 		return array_merge( $_db_option, $this->value );
