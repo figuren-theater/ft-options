@@ -44,9 +44,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
-        "psr-4": {
-            "Figuren_Theater\\Options\\": "inc/"
-        }
+        "classmap": [
+            "inc/"
+        ]
     },
     "config": {
         "allow-plugins": {
