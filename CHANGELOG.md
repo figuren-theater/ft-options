@@ -2,7 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/ft-options/compare/1.2.1...HEAD)
+## [Unreleased](https://github.com/figuren-theater/ft-options/compare/1.2.2...HEAD)
+
+## [1.2.2](https://github.com/figuren-theater/ft-options/compare/1.2.1...1.2.2) - 2023-09-10
+
+- Revert (adding old-stuff as dependency) #c6c9cabba ([#6](https://github.com/figuren-theater/ft-options/pull/6))
 
 ## [1.2.1](https://github.com/figuren-theater/ft-options/compare/1.2.0...1.2.1) - 2023-09-08
 
