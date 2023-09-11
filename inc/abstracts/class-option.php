@@ -219,7 +219,7 @@ abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces
 	 * @return string Could only be `'option'` or `'site_option'`.
 	 */
 	public function set_type( $type ) : string {
-		if ( in_array( $type, [ 'option', 'site_option' ], true ) ) {
+		if ( ! in_array( $type, [ 'option', 'site_option' ], true ) ) {
 			return '';
 		}
 		$this->type = $type;
