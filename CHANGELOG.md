@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/ft-options/compare/1.2.2...HEAD)
+## [Unreleased](https://github.com/figuren-theater/ft-options/compare/1.2.3...HEAD)
+
+## [1.2.3](https://github.com/figuren-theater/ft-options/compare/1.2.2...1.2.3) - 2023-09-11
+
+### 🐛 Fixed
+
+- Fix refactor-mistake (which lead to overall outtimes) ([#7](https://github.com/figuren-theater/ft-options/pull/7))
 
 ## [1.2.2](https://github.com/figuren-theater/ft-options/compare/1.2.1...1.2.2) - 2023-09-10
 
