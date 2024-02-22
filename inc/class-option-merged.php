@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Figuren_Theater\Options;
 
-use Figuren_Theater\Options\Abstracts;
-
 /**
  * Normal option, merged from the DB and static values provied by this option.
  *
@@ -28,7 +26,7 @@ class Option_Merged extends Abstracts\Option {
 	 *
 	 * @return bool TRUE on success, FALSE otherwise.
 	 */
-	public function load() : bool {
+	public function load(): bool {
 
 		if ( ! $this->should_load() ) {
 			return false;
@@ -38,7 +36,7 @@ class Option_Merged extends Abstracts\Option {
 		$_this = $this;
 		\add_filter(
 			"default_{$this->identifier}",
-			static function() use ( $_this ) {
+			static function () use ( $_this ) {
 				return $_this->value;
 			},
 			$this->filter_priority,
@@ -58,7 +56,7 @@ class Option_Merged extends Abstracts\Option {
 	 *
 	 * @return     mixed|null Returns any option saved with the same name
 	 */
-	public function get_value() : mixed {
+	public function get_value(): mixed {
 
 		// Remove filter to prevent infinite loop
 		// inside of get_option() (where we are right now ;) !
@@ -77,5 +75,4 @@ class Option_Merged extends Abstracts\Option {
 		// else ...
 		return array_merge( $_db_option, $this->value );
 	}
-
 }

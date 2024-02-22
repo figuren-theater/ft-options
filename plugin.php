@@ -34,7 +34,8 @@ const DIRECTORY = __DIR__;
  */
 \add_action(
 	'Figuren_Theater\init',
-	function ( $ft_site ) : void {
+	// phpcs:ignore Universal.FunctionDeclarations.NoLongClosures.ExceedsRecommended
+	function ( $ft_site ): void {
 
 		if ( ! is_a( $ft_site, 'Figuren_Theater\ProxiedSite' ) ) {
 			return;
@@ -48,9 +49,7 @@ const DIRECTORY = __DIR__;
 
 		// 3. Setup SitePart Manager for 'Options'
 		// with its Collection.
-		$ft_site->set_Options_Manager(
-			new Manager( $collection )
-		);
+		$ft_site->set_Options_Manager( new Manager( $collection ) );
 
 		/**
 		 * Register the Collection to the API, for instant availability.
@@ -68,7 +67,6 @@ const DIRECTORY = __DIR__;
 		 * ```
 		 */
 		\Figuren_Theater\API::add( 'Options', __NAMESPACE__ . '\\Collection::get_collection' );
-
 	},
 	40
 );

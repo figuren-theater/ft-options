@@ -52,14 +52,14 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 	 *
 	 * @return array<string, string|array<int, mixed>>
 	 */
-	public static function get_subscribed_events() : array {
+	public static function get_subscribed_events(): array {
 		return [
 			// Load early,
 			// but not before the 'FeatureManager' enabled the basics
 			// which happens at 'Figuren_Theater\loaded' 11
 			// and the PluginsManager sent over all Plugin-Options
 			// we should handle over here, which happens at 'Figuren_Theater\loaded' 12 .
-			'Figuren_Theater\loaded'         => [ 'init', 13 ],
+			'Figuren_Theater\loaded'   => [ 'init', 13 ],
 
 			// Register weekly action.
 			'load-options-general.php' => 'register_cron_cleanup',
@@ -79,7 +79,7 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 	 *
 	 * @since  1.1
 	 */
-	public function init() : void {
+	public function init(): void {
 		$_all_options = $this->collection->get();
 
 		// sort managed options by type
@@ -122,7 +122,7 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 	 *
 	 * @since  1.2
 	 */
-	public function new_set_and_cleanup_db() : void {
+	public function new_set_and_cleanup_db(): void {
 
 		// Make sure we start fresh.
 		wp_cache_delete( 'alloptions', 'options' );
@@ -174,7 +174,7 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 	 *
 	 * @since     2.10
 	 */
-	public function register_cron_cleanup() : void {
+	public function register_cron_cleanup(): void {
 		if ( ! wp_next_scheduled( 'ft_db_cleanup' ) && ! wp_installing() ) {
 			wp_schedule_event( time(), 'weekly', 'ft_db_cleanup' );
 		}
@@ -189,7 +189,7 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 	 *
 	 * @since     2.10
 	 */
-	public function run_cron_cleanup() : void {
+	public function run_cron_cleanup(): void {
 
 		// 1. set autoload to "no" or delete all statically handled options
 		$this->new_set_and_cleanup_db();
@@ -210,7 +210,6 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 		//
 		// this was tooo hard for normal WP, got a fatal during install
 		$this->delete_options();
-
 	}
 
 	/**
@@ -222,7 +221,7 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 	 *
 	 * @return void
 	 */
-	protected function un_autoload_options( array $options = [] ) : void {
+	protected function un_autoload_options( array $options = [] ): void {
 
 		$options = ! empty( $options ) ? $options : [
 			// phpcs:ignore Squiz.PHP.CommentedOutCode.Found
@@ -262,7 +261,7 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 
 		array_walk(
 			$options,
-			function( string $option ) use ( $options_manager ) : void {
+			function ( string $option ) use ( $options_manager ): void {
 				$options_manager->un_autoload_option( $option );
 			}
 		);
@@ -279,7 +278,7 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 	 *
 	 * @return  bool True when option was newly added with autoload='no', false on failure.
 	 */
-	protected function un_autoload_option( string $name, $value = null ) : bool {
+	protected function un_autoload_option( string $name, $value = null ): bool {
 
 		// Get a $value, if none.
 		if ( null === $value ) {
@@ -310,7 +309,7 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 	 *
 	 * @return void
 	 */
-	protected function delete_options( array $options = [] ) : void {
+	protected function delete_options( array $options = [] ): void {
 
 		$options = ! empty( $options ) ? $options : [
 
@@ -374,8 +373,4 @@ class Manager extends SiteParts\SitePartsManagerAbstract {
 
 		\array_walk( $options, 'delete_option' );
 	}
-
 }
-
-
-

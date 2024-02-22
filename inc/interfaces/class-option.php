@@ -26,7 +26,7 @@ interface Option {
 	 *
 	 * @return     string The name of the option, without any prefixes, just the name.
 	 */
-	public function set_name( string $name ) : string;
+	public function set_name( string $name ): string;
 
 	/**
 	 * Defines the value of this option.
@@ -38,7 +38,7 @@ interface Option {
 	 *
 	 * @return     bool Whether value is set or not.
 	 */
-	public function set_value( $value ) : bool;
+	public function set_value( $value ): bool;
 
 	/**
 	 * Get Option value.
@@ -48,5 +48,5 @@ interface Option {
 	 *
 	 * @return     mixed|null Returns any option with the same name.
 	 */
-	public function get_value() : mixed;
+	public function get_value(): mixed;
 }

@@ -28,7 +28,7 @@ interface Loadable {
 	 *
 	 * @return bool TRUE on success, FALSE otherwise.
 	 */
-	public function load() : bool;
+	public function load(): bool;
 
 	/**
 	 * Unload.
@@ -38,7 +38,7 @@ interface Loadable {
 	 *
 	 * @return bool TRUE on success, FALSE otherwise.
 	 */
-	public function unload() : bool;
+	public function unload(): bool;
 
 	/**
 	 * Whether or not the resource has been loaded already.
@@ -48,5 +48,5 @@ interface Loadable {
 	 *
 	 * @return bool
 	 */
-	public function is_loaded() : bool;
+	public function is_loaded(): bool;
 }

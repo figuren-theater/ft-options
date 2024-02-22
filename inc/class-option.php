@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Figuren_Theater\Options;
 
-use Figuren_Theater\Options\Abstracts;
-
 /**
  * Normal option
  *

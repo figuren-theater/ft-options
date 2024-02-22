@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace Figuren_Theater\Options;
 
-use Figuren_Theater\Options\Interfaces;
 use Figuren_Theater\SiteParts;
 
 /**
@@ -20,7 +19,7 @@ use Figuren_Theater\SiteParts;
  * @package Figuren_Theater\Options
  * @since   1.1
  */
-final class Proxied_Collection extends SiteParts\ProxiedSitePartsCollectionAbstract {
+class Proxied_Collection extends SiteParts\ProxiedSitePartsCollectionAbstract {
 
 	/**
 	 * Checks wether it is allowed to add something to our collection.
@@ -34,7 +33,7 @@ final class Proxied_Collection extends SiteParts\ProxiedSitePartsCollectionAbstr
 	 *
 	 * @return bool
 	 */
-	protected function validate( $input ) : bool {
+	protected function validate( $input ): bool {
 		return $input instanceof Interfaces\Option;
 	}
 }
