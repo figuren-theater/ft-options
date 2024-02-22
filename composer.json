@@ -32,7 +32,7 @@
         "markjaquith/wp-tlc-transients": "^1.0"
     },
     "require-dev": {
-        "figuren-theater/code-quality": "*"
+        "figuren-theater/code-quality": "^1.1"
     },
     "autoload": {
         "classmap": [
