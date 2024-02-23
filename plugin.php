@@ -11,7 +11,7 @@
  * Plugin Name:       figuren.theater | Options
  * Plugin URI:        https://github.com/figuren-theater/ft-options
  * Description:       Options Management for a WordPress multisite network like figuren.theater
- * Version:           1.2.3
+ * Version:           1.2.4
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            figuren.theater
