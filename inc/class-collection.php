@@ -17,7 +17,7 @@ use Figuren_Theater\SiteParts;
  * @package Figuren_Theater\Options
  * @since   1.1
  */
-final class Collection extends SiteParts\SitePartsCollectionAbstract {
+class Collection extends SiteParts\SitePartsCollectionAbstract {
 
 	/**
 	 * Retrieve the non-static proxied Collection
@@ -26,7 +26,7 @@ final class Collection extends SiteParts\SitePartsCollectionAbstract {
 	 *
 	 * @return  Proxied_Collection The one-and-only static instance of our collection.
 	 */
-	public static function get_collection() : SiteParts\SitePartsCollectionInterface {
+	public static function get_collection(): SiteParts\SitePartsCollectionInterface {
 		static $collection = null;
 
 		if ( null === $collection ) {
@@ -38,4 +38,3 @@ final class Collection extends SiteParts\SitePartsCollectionAbstract {
 		return $collection;
 	}
 }
-

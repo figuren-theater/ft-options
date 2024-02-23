@@ -7,14 +7,14 @@
 
 namespace Figuren_Theater\Options\Abstracts;
 
-use Figuren_Theater\Options\Interfaces as Options_Interfaces;
+use Figuren_Theater\Options\Interfaces;
 
 /**
  * Abstract Option class which can be used as is, or extended.
  *
  * @package Figuren_Theater\Options\Abstracts
  */
-abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces\Option {
+abstract class Option implements Interfaces\Loadable, Interfaces\Option {
 
 	/**
 	 * The name of the option.
@@ -158,7 +158,7 @@ abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces
 	 *
 	 * @return     string The name of the option, without any prefixes, just the name.
 	 */
-	public function set_name( string $name ) : string {
+	public function set_name( string $name ): string {
 		// Guard clauses are safer than type casting on the function|method calls,
 		// because we avoid fatal PHP errors.
 		if ( empty( $name ) ) {
@@ -178,7 +178,7 @@ abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces
 	 *
 	 * @return     bool Whether value is set or not.
 	 */
-	public function set_value( $value ) : bool {
+	public function set_value( $value ): bool {
 		// Check only against type of FALSE
 		// to keep the possibility for the value to be '0' (zero).
 		if ( false !== $value ) {
@@ -201,7 +201,7 @@ abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces
 	 *
 	 * @return string Could only be `'core'` or some `{$plugin_basename}`.
 	 */
-	public function set_origin( string $origin ) : string {
+	public function set_origin( string $origin ): string {
 		if ( empty( $origin ) ) {
 			return '';
 		}
@@ -218,7 +218,7 @@ abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces
 	 *
 	 * @return string Could only be `'option'` or `'site_option'`.
 	 */
-	public function set_type( $type ) : string {
+	public function set_type( $type ): string {
 		if ( ! in_array( $type, [ 'option', 'site_option' ], true ) ) {
 			return '';
 		}
@@ -236,7 +236,7 @@ abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces
 	 *
 	 * @param   callable $callback Callable function or method to use as action, to hook onto this options filter.
 	 */
-	public function set_filter_callback( $callback = null ) : void {
+	public function set_filter_callback( $callback = null ): void {
 
 		// This is the default.
 		$this->filter_callback = [ $this, 'get_value' ];
@@ -255,7 +255,7 @@ abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces
 	 *
 	 * @return     mixed|null Returns any option with the same name.
 	 */
-	public function get_value() : mixed {
+	public function get_value(): mixed {
 		return $this->value;
 	}
 
@@ -264,7 +264,7 @@ abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces
 	 *
 	 * @since   1.1
 	 */
-	protected function add_to_collection() : void {
+	protected function add_to_collection(): void {
 		\Figuren_Theater\API::get( 'Options' )->add( $this->identifier, $this );
 	}
 
@@ -276,7 +276,7 @@ abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces
 	 *
 	 * @return bool TRUE on success, FALSE otherwise.
 	 */
-	public function load() : bool {
+	public function load(): bool {
 		if ( $this->should_load() ) {
 			// this could be a little tricky because
 			// add_filter always returns true!
@@ -298,7 +298,7 @@ abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces
 	 *
 	 * @return bool TRUE on success, FALSE otherwise.
 	 */
-	public function unload() : bool {
+	public function unload(): bool {
 
 		// Remove filter to prevent infinite loop
 		// inside of get_option() (where we are right now ;) !
@@ -320,7 +320,7 @@ abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces
 	 *
 	 * @return bool
 	 */
-	public function is_loaded() : bool {
+	public function is_loaded(): bool {
 		return $this->loaded;
 	}
 
@@ -331,7 +331,7 @@ abstract class Option implements Options_Interfaces\Loadable, Options_Interfaces
 	 *
 	 * @return     bool       Allowed to filter.
 	 */
-	public function should_load() : bool {
+	public function should_load(): bool {
 		return ! empty( $this->filter_hook );
 	}
 }

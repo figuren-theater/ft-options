@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Figuren_Theater\Options;
 
-use Figuren_Theater\Options\Abstracts;
-
 /**
  * Normal option, synced from a remote blog.
  *
@@ -40,7 +38,7 @@ class Option_Synced extends Abstracts\Option {
 	 *
 	 * @return     bool Whether value is set or not.
 	 */
-	public function set_value( $value ) : bool {
+	public function set_value( $value ): bool {
 		if ( parent::set_value( $value ) ) {
 			$this->set_remote_blog_id();
 		}
@@ -62,7 +60,7 @@ class Option_Synced extends Abstracts\Option {
 	 *
 	 * @param      int $remote_blog_id Blog ID where to retrieve this option from. Defaults to https://figuren.theater.
 	 */
-	public function set_remote_blog_id( int $remote_blog_id = 1 ) : void {
+	public function set_remote_blog_id( int $remote_blog_id = 1 ): void {
 
 		// Allow to use '$this' in an anonymous function, later on.
 		$option_synced = $this;
@@ -138,7 +136,7 @@ class Option_Synced extends Abstracts\Option {
 	 *
 	 * @return     mixed|null Returns any option saved with the same name from the remote blog.
 	 */
-	public function get_value() : mixed {
+	public function get_value(): mixed {
 
 		if ( empty( $this->remote_blog_id ) ) {
 			return null;
@@ -166,7 +164,7 @@ class Option_Synced extends Abstracts\Option {
 	 *
 	 * @return     bool       Allowed to sync this option.
 	 */
-	public function should_load() : bool {
+	public function should_load(): bool {
 		return ! empty( $this->filter_hook ) && \get_current_blog_id() !== $this->remote_blog_id;
 	}
 }
