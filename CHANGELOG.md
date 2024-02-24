@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/ft-options/compare/1.2.4...HEAD)
+## [Unreleased](https://github.com/figuren-theater/ft-options/compare/1.2.5...HEAD)
+
+## [1.2.5](https://github.com/figuren-theater/ft-options/compare/1.2.4...1.2.5) - 2024-02-24
+
+### 🚀 Added
+
+- Document ugly dependencies to old spaghetti code (#12) ([#13](https://github.com/figuren-theater/ft-options/pull/13))
 
 ## [1.2.4](https://github.com/figuren-theater/ft-options/compare/1.2.3...1.2.4) - 2024-02-23
 
