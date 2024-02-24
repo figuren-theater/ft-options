@@ -45,6 +45,15 @@ use function wp_schedule_event;
 class Manager extends SiteParts\SitePartsManagerAbstract {
 
 	/**
+	 * Setup the manager.
+	 *
+	 * @param  SiteParts\SitePartsCollectionInterface $collection The collection of all elements of options.
+	 */
+	public function __construct( SiteParts\SitePartsCollectionInterface $collection ) { // phpcs:ignore Generic.CodeAnalysis.UselessOverridingMethod.Found
+		parent::__construct( $collection );
+	}
+
+	/**
 	 * Returns an array of hooks that this subscriber wants to register with
 	 * the WordPress plugin API.
 	 *

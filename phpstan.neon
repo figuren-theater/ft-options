@@ -8,6 +8,19 @@ parameters:
         - plugin.php
     excludePaths:
         analyse:
+            # TODO #12 Remove ugly dependencies to old spaghetti code
+            # Error message "Class Figuren_Theater\Options\Collection extends unknown class ...
+            # ... Figuren_Theater\SiteParts\SitePartsCollectionAbstract." cannot be ignored, use
+            # excludePaths instead.  
+            - inc/class-collection.php  
+            # Error message "Class Figuren_Theater\Options\Proxied_Collection extends unknown class ...
+            # ... Figuren_Theater\SiteParts\ProxiedSitePartsCollectionAbstract." cannot be ignored, use
+            # excludePaths instead.  
+            - inc/class-proxied-collection.php  
+            # Error message "Class Figuren_Theater\Options\Manager extends unknown class ...
+            # ... Figuren_Theater\SiteParts\SitePartsManagerAbstract." cannot be ignored, use
+            # excludePaths instead.  
+            - inc/class-manager.php  
             - vendor/
             # "/wp-content/" is created during composer install,
             # when package is tested
@@ -15,4 +28,7 @@ parameters:
             - wp-content/
             - tests/
     ignoreErrors:
-
+        # TODO #12 Remove ugly dependencies to old spaghetti code
+        - '#Call to static method add\(\) on an unknown class Figuren_Theater\\API\.#'
+        - '#Call to static method get\(\) on an unknown class Figuren_Theater\\API\.#'
+        - '#Call to method set_Options_Manager\(\) on an unknown class Figuren_Theater\\ProxiedSite\.#'
