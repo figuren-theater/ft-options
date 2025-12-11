@@ -2,7 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/ft-options/compare/1.2.5...HEAD)
+## [Unreleased](https://github.com/figuren-theater/ft-options/compare/1.2.6...HEAD)
+
+## [1.2.6](https://github.com/figuren-theater/ft-options/compare/1.2.5...1.2.6) - 2025-12-11
+
+### Dependency Updates & Maintenance
+
+- Bump figuren-theater/code-quality from 1.2.1 to 2.0.0 ([#16](https://github.com/figuren-theater/ft-options/pull/16))
+- Bump figuren-theater/code-quality from 1.1.1 to 1.2.1 ([#14](https://github.com/figuren-theater/ft-options/pull/14))
 
 ## [1.2.5](https://github.com/figuren-theater/ft-options/compare/1.2.4...1.2.5) - 2024-02-24
 
